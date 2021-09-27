@@ -1,0 +1,126 @@
+.todoDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.todoWrapperTop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-top: 40px;
+    padding: 30px 100px;
+    border-radius: 5px;
+    width: 20%;
+}
+
+.todoBody {
+    width: 400px;
+    text-align: center;
+}
+
+.todoTitle {
+    color: white;
+    font-size: 3rem;
+    background: linear-gradient(to right, #30CFD0 0%, #8247F5 100%);
+    -webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    margin-top: 100px;
+    margin-bottom: 15px;
+}
+
+.descriptionToDo {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.todoInput {
+    padding: 8px 12px;
+    border: solid 1px #8247F5;
+    border-radius: 5px;  
+    margin-right: 3px;
+    outline: none;
+}
+
+.addTask {
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    background-color: #8247F5;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.todoWrapperBottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin-top: 40px;
+    padding: 30px 100px;
+    border-radius: 5px;
+    width: 20%;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.completedList {
+    color: greenyellow;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.deletedList {
+    color: red;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.currentList {
+    color: #8247F5;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.myTasks {
+    background: linear-gradient(to right, #30CFD0 0%, #8247F5 100%);
+    -webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.tasks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+    .todoWrapperTop {
+        width: 50%;
+    }
+
+    .todoWrapperBottom {
+        width: 50%;
+    }
+    
+}

@@ -1,0 +1,67 @@
+.tasksDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.taskDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-bottom: solid 1px rgb(240, 240, 240);
+    padding-bottom: 15px;
+}
+
+.buttonsDiv {
+    display: flex;
+    width: 40%;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.taskTitle {
+    font-size: 18px;
+    color: #8247F5;
+    font-weight: bold;
+}
+
+.completeTitle {
+    font-size: 18px;
+    text-decoration: line-through;
+    text-decoration-thickness: 3px;
+    color: red;
+}
+
+.editButton {
+    background-color: transparent;
+    color: black;
+    border: none;
+    font-size: 15px !important;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.deleteButton {
+    background-color: transparent;
+    color: red;
+    border: none;
+    font-size: 15px !important;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.completeButton {
+    background-color: transparent;
+    color: greenyellow;
+    border: none;
+    font-size: 15px !important;
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+}
