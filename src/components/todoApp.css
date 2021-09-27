@@ -94,7 +94,7 @@
     font-weight: bold;
     cursor: pointer;
     text-align: center;
-    margin-right: 20px;
+    margin-right: 2y0px;
 }
 
 .deletedList {
@@ -138,9 +138,15 @@
         width: 50%;
     }
 
+    .todoHeader {
+        width: 100%;
+    }
+
     .todoForm {
         width: 90%;
         display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
 }
