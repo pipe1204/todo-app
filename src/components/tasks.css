@@ -33,7 +33,7 @@
     font-size: 18px;
     text-decoration: line-through;
     text-decoration-thickness: 3px;
-    color: greenyellow;
+    color: rgb(69, 209, 69);
 }
 
 .editButton {
@@ -58,7 +58,7 @@
 
 .completeButton {
     background-color: transparent;
-    color: greenyellow;
+    color: rgb(69, 209, 69);
     border: none;
     font-size: 15px !important;
     cursor: pointer;

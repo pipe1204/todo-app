@@ -36,7 +36,7 @@
     background: linear-gradient(to right, #30CFD0 0%, #8247F5 100%);
     -webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-bottom: 15px;
 }
 
@@ -89,7 +89,7 @@
 }
 
 .completedList {
-    color: greenyellow;
+    color: rgb(69, 209, 69);
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
