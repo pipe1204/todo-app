@@ -88,7 +88,7 @@ const TodoApp = () => {
             <div className="todoWrapperTop">
                 {alert.show && <Alert {...alert} removeAlert={showAlert} list={list}/>}
                 <div className="todoHeader">
-                    <form onSubmit={handleSubmit}>
+                    <form className="todoForm" onSubmit={handleSubmit}>
                         <input type="text" value={name} placeholder="E.g Study React" className="todoInput" onChange={(e) => setName(e.target.value)}/>
                         <button className="addTask">{isEditing ? "Edit" : "Add"}</button>
                     </form>

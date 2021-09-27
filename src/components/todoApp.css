@@ -123,5 +123,10 @@
     .todoWrapperBottom {
         width: 50%;
     }
+
+    .todoForm {
+        width: 90%;
+        display: flex;
+    }
     
 }

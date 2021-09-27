@@ -22,3 +22,13 @@
     width: 400px;
     text-align: center;
 }
+
+@media screen and (max-width: 540px) {
+    .danger {
+        width: 200px;
+    }
+
+    .success {
+        width: 200px;
+    }
+}
