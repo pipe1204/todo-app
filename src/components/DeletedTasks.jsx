@@ -1,11 +1,11 @@
 import React from 'react'
 import { FaEdit, FaTrash, FaCheck } from "react-icons/fa"
 
-const DeletedTasks = ({ deletedItems, completeTask, editTask, removeItem }) => {
+const DeletedTasks = ({ deleteItems, completeTask, editTask, removeItem }) => {
     return (
         <div className="tasksDiv">
             {
-                deletedItems.map((item) => {
+                deleteItems.map((item) => {
                     const {id, title, completed} = item
                     return (
                         <>

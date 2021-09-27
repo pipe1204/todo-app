@@ -18,8 +18,7 @@ const TodoApp = () => {
     const [completeCheck, setCompleteCheck] = useState(false)
     const [deletedList, setDeletedList] = useState([])
     const [deleteCheck, setDeleteCheck] = useState(false)
-
-    const newDeletedList = []
+    const [darkMode, setDarkmode] = useState(false)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -39,8 +38,10 @@ const TodoApp = () => {
             setIsEditing(false)
         } else {
             //show success alert
-            const newTask = {id: new Date().getTime().toString(), title: name, completed: false}
+            const newTask = {id: new Date().getTime().toString(), title: name, completed: false, removed: false}
             setList([...list, newTask]);
+            setDeletedList([...list, newTask])
+            setCompletedList([...list, newTask])
             setName("")
             showAlert(true,"success","Your task has been added!")
         }
@@ -59,15 +60,20 @@ const TodoApp = () => {
                 setList(list.filter((item) => item.id !== id))
             }
         })
+        deletedList.map((item) => {
+            if (item.id === id) {
+                item.removed = true
+            }
+        })
+        console.log(list)
+        console.log(deletedList)
     }
     
 
     const showDeleteList = () => {
-        list.map((item) => {
-            if (item.removed === true) {
-                console.log("Yes")
-            }
-        })
+        setDeletedList(deletedList.filter((item) => item.removed === true))
+        setDeleteCheck(true)
+        setCompleteCheck(false)
     }
 
     const completeTask = (id) => {
@@ -87,7 +93,7 @@ const TodoApp = () => {
     }
 
     const showCompletedList = () => {
-        const newCompletedList = list.filter((item) => item.completed === true)
+        const newCompletedList = completedList.filter((item) => item.completed === true)
         setCompletedList(newCompletedList)
         setCompleteCheck(true)
     }
@@ -97,8 +103,19 @@ const TodoApp = () => {
         setDeleteCheck(false)
     }
 
+    const handleMode = () => {
+        setDarkmode(!darkMode)
+    }
+
+    console.log(darkMode)
+
     return (
-        <div className="todoDiv">
+        <div className={darkMode ? "todoDiv dark" : "todoDiv"}>
+            <label className="switch">
+                <input type="checkbox" onClick={handleMode}/>
+                <span className="slider round"></span>
+            </label>
+            <p className="darkMode">Dark Mode</p>
             <h1 className="todoTitle">My To-Do App</h1>
             <p className="descriptionToDo">Add tasks to your to-do list, complete them and delete them <br></br>when they have been done!</p>
             <div className="todoWrapperTop">
@@ -111,7 +128,7 @@ const TodoApp = () => {
                     {list.length > 0 && (
                         <div className="filters">
                         <p className="completedList" onClick={showCompletedList}>Completed Tasks</p>
-                        {/* <p className="deletedList" onClick={showDeleteList}>Deleted Tasks</p> */}
+                        <p className="deletedList" onClick={showDeleteList}>Deleted Tasks</p>
                         <p className="currentList" onClick={showCurrentTasks}>All Tasks</p>
                     </div>
                     )}
@@ -122,7 +139,7 @@ const TodoApp = () => {
                 <div className="todoBody">
                 {
                     (completeCheck) ? (<div className="tasks"><CompletedTasks completeItems={completedList}/></div>) 
-                    : (!completeCheck) ? (<div className="tasks">
+                    : (deleteCheck) ? (<div className="tasks"><DeletedTasks deleteItems={deletedList}/></div>) : (!completeCheck && !deleteCheck) ? (<div className="tasks">
                         <Tasks 
                             items={list} 
                             removeItem={removeItem} 
