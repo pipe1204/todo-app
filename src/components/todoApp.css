@@ -40,7 +40,7 @@
 }
 
 .todoInput {
-    padding: 8px 12px;
+    padding: 8px 9px;
     border: solid 1px #8247F5;
     border-radius: 5px;  
     margin-right: 3px;
@@ -55,7 +55,7 @@
     color: white;
     font-weight: bold;
     text-transform: uppercase;
-    margin-left: 3px;
+    margin-left: 2px;
     cursor: pointer;
 }
 
@@ -76,6 +76,7 @@
     justify-content: space-around;
     align-items: center;
     margin-bottom: 15px;
+    padding: 5px 12px;
 }
 
 .completedList {
@@ -114,7 +115,7 @@
     width: 100%;
 }
 
-@media screen and (min-width: 460px) {
+@media screen and (max-width: 540px) {
     .todoWrapperTop {
         width: 50%;
     }
