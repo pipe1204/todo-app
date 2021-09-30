@@ -1,25 +1,26 @@
 import React from 'react'
 import { FaEdit, FaTrash, FaCheck } from "react-icons/fa"
 
-const DeletedTasks = ({ deleteItems, completeTask, editTask, removeItem }) => {
+const DeletedTasks = ({ deleteItems }) => {
+
     return (
         <div className="tasksDiv">
             {
                 deleteItems.map((item) => {
-                    const {id, title, completed} = item
+                    const {id, title, removed} = item
                     return (
                         <>
                         <div className="taskDiv" key={id}>
-                            <p className={completed ? "completeTitle" : "taskTitle"}>{title}</p>
+                            <p className={removed ? "completeTitle" : "taskTitle"}>{title}</p>
                             <div className="buttonsDiv">
-                                <button className="completeButton" onClick={() => completeTask(id)}>
-                                    <FaCheck/>
+                                <button className="completeButton">
+                                    {/* <FaCheck/> */}
                                 </button>
-                                <button className="editButton" onClick={() => editTask(id)}>
-                                    <FaEdit/>
+                                <button className="editButton">
+                                    {/* <FaEdit/> */}
                                 </button>
-                                <button className="deleteButton" onClick={() => {removeItem(id)}}>
-                                    <FaTrash/>
+                                <button className="deleteButton">
+                                    {/* <FaTrash onClick={handleTrash}/> */}
                                 </button>
                             </div>
                         </div>

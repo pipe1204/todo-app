@@ -1,9 +1,8 @@
 import React from 'react'
-import "./completedTasks.css"
 import { FaEdit, FaTrash, FaCheck } from "react-icons/fa"
 
-const CompletedTasks = ({ removeItem, editTask, completeTask, completeItems }) => {
-    
+const CompletedTasks = ({ completeItems }) => {
+
     return (
         <div className="tasksDiv">
             {
@@ -14,14 +13,14 @@ const CompletedTasks = ({ removeItem, editTask, completeTask, completeItems }) =
                         <div className="taskDiv" key={id}>
                             <p className={completed ? "completeTitle" : "taskTitle"}>{title}</p>
                             <div className="buttonsDiv">
-                                <button className="completeButton" onClick={() => completeTask(id)}>
-                                    <FaCheck/>
+                                <button className="completeButton">
+                                    {/* <FaCheck/> */}
                                 </button>
-                                <button className="editButton" onClick={() => editTask(id)}>
-                                    <FaEdit/>
+                                <button className="editButton">
+                                    {/* <FaEdit/> */}
                                 </button>
-                                <button className="deleteButton" onClick={() => {removeItem(id)}}>
-                                    <FaTrash/>
+                                <button className="deleteButton">
+                                    {/* <FaTrash/> */}
                                 </button>
                             </div>
                         </div>

@@ -7,6 +7,17 @@ import Alert from "./Alert"
 import CompletedTasks from './CompletedTasks'
 import DeletedTasks from './DeletedTasks'
 
+//Local Storage function
+
+// const getLocalStorage = () => {
+//     let list = localStorage.getItem("globalList");
+//     if (list) {
+//         return JSON.parse(localStorage.getItem("globalList"))
+//     } else {
+//         return []
+//     }
+// }
+
 const TodoApp = () => {
 
     const [name, setName] = useState("")
@@ -14,6 +25,7 @@ const TodoApp = () => {
     const [isEditing, setIsEditing] = useState(false)
     const [editID, setEditID] = useState(null)
     const [alert, setAlert] = useState({show: false, msg:"", type:""})
+    const [globalList, setGlobalList] = useState([])
     const [completedList, setCompletedList] = useState([])
     const [completeCheck, setCompleteCheck] = useState(false)
     const [deletedList, setDeletedList] = useState([])
@@ -39,9 +51,10 @@ const TodoApp = () => {
         } else {
             //show success alert
             const newTask = {id: new Date().getTime().toString(), title: name, completed: false, removed: false}
+            setGlobalList([...globalList, newTask])
             setList([...list, newTask]);
-            setDeletedList([...list, newTask])
-            setCompletedList([...list, newTask])
+            setDeletedList([...deletedList, newTask])
+            setCompletedList([...completedList, newTask])
             setName("")
             showAlert(true,"success","Your task has been added!")
         }
@@ -53,38 +66,6 @@ const TodoApp = () => {
         setAlert({show,type,msg})
     }
 
-    const removeItem = (id) => {
-        list.map((item) => {
-            if (item.id === id && item.completed) {
-                showAlert(true, "danger", "Task has been removed")
-                setList(list.filter((item) => item.id !== id))
-            }
-        })
-        deletedList.map((item) => {
-            if (item.id === id) {
-                item.removed = true
-            }
-        })
-        console.log(list)
-        console.log(deletedList)
-    }
-    
-
-    const showDeleteList = () => {
-        setDeletedList(deletedList.filter((item) => item.removed === true))
-        setDeleteCheck(true)
-        setCompleteCheck(false)
-    }
-
-    const completeTask = (id) => {
-        showAlert(true, "You have completed a task!")
-        list.find((item) => {
-            if (item.id === id) {
-                item.completed = !item.completed             
-            }
-        })
-    }
-
     const editTask = (id) => {
         const taskToBeEdited = list.find((item) => item.id === id);
         setIsEditing(true)
@@ -92,10 +73,35 @@ const TodoApp = () => {
         setName(taskToBeEdited.title)
     }
 
+    const removeItem = (id) => {
+        globalList.map((item) => {
+            if (item.id === id && item.completed) {
+                showAlert(true, "danger", "Task has been removed")
+                setList(globalList.filter((item) => item.id !== id))
+                item.removed = true
+            }
+        })
+    }
+
+    const completeTask = (id) => {
+        showAlert(true, "You have completed a task!")
+        globalList.find((item) => {
+            if (item.id === id) {
+                item.completed = !item.completed             
+            }
+        })
+    }
+
+    const showDeleteList = () => {
+        setDeletedList(globalList.filter((item) => item.removed === true))
+        setDeleteCheck(true)
+        setCompleteCheck(false)
+    }
+
     const showCompletedList = () => {
-        const newCompletedList = completedList.filter((item) => item.completed === true)
-        setCompletedList(newCompletedList)
+        setCompletedList(globalList.filter((item) => item.completed === true))
         setCompleteCheck(true)
+        setDeleteCheck(false)
     }
 
     const showCurrentTasks = () => {
@@ -107,7 +113,9 @@ const TodoApp = () => {
         setDarkmode(!darkMode)
     }
 
-    console.log(darkMode)
+    // useEffect(() => {
+    //     localStorage.setItem('globalList', JSON.stringify(globalList))
+    // }, [globalList])
 
     return (
         <div className={darkMode ? "todoDiv dark" : "todoDiv"}>
